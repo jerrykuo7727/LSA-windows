@@ -211,20 +211,31 @@ filename = 'LSA' + str(lsa_dim) + '-Ut'
 #               |                      |
 #               ------------------------
 lsa_U_matrix = []
-#fu = open('LSA_U_matrix.log', 'w')
+fu = open('LSA_U_matrix.log', 'w')
+
+#TODO: read LSA matrix by row
+#for docs in doc_file_names_list:
+#    this_doc_word_freq = rd.ReadOneDocument(doc_dir, docs)
+#    temp = { 'doc_id': docs, 'word_freq_list': this_doc_word_freq }
+#    full_docs_wf_list.append(temp)
+#end for read doc files
+readU = open(filename, 'r')
 
 for d in range(0, lsa_dim):
-    file_column = rl.getRow(filename)[d]
-    lsa_U_matrix.append(file_column)
+    #file_row = rl.getRow(filename)[d]
 
-    #fu.write('\n--------------------------------Column {0}\n'.format(d))
-    #for c in file_column:
-    #    fu.write('    ' + str(c))
-    #    fu.write('\n')
-    #fu.write('\n\n')
+    if d == 0 or d == 1 or d == 2 :
+        print '$' + str(file_row)
+    lsa_U_matrix.append(file_row)
 
-#fu.write(str(lsa_U_matrix))
-#fu.close()
+    fu.write('\n--------------------------------Column {0}\n'.format(d))
+    for r in file_row:
+        fu.write('    ' + str(r))
+        fu.write('\n')
+    fu.write('\n\n')
+
+fu.write(str(lsa_U_matrix))
+fu.close()
 
 
 #//////////////////////////////////////////////////////////////
@@ -245,20 +256,21 @@ filename = 'LSA' + str(lsa_dim) + '-Vt'
 #                 |                      |
 #                 ------------------------
 lsa_V_matrix = []
-#fv = open('LSA_V_matrix.log', 'w')
+fv = open('LSA_V_matrix.log', 'w')
 
+#TODO: read LSA matrix by row
 for d in range(0, lsa_dim):
     file_column = rl.getRow(filename)[d]
     lsa_V_matrix.append(file_column)
 
-    #fv.write('\n--------------------------------Column {0}\n'.format(d))
-    #for c in file_column:
-    #    fv.write('    ' + str(c))
-    #    fv.write('\n')
-    #fv.write('\n\n')
+    fv.write('\n--------------------------------Column {0}\n'.format(d))
+    for c in file_column:
+        fv.write('    ' + str(c))
+        fv.write('\n')
+    fv.write('\n\n')
 
-#fv.write(str(lsa_V_matrix))
-#fv.close()
+fv.write(str(lsa_V_matrix))
+fv.close()
 
 
 
@@ -272,7 +284,7 @@ filename = 'LSA' + str(lsa_dim) + '-S'
 
 #LSA-S是對角矩陣， 存他的對角值就好
 lsa_S_diagonal = []
-#fs = open('LSA_S_diagonal.log', 'w')
+fs = open('LSA_S_diagonal.log', 'w')
 
 #只有一直行, 直接讀就好
 file_column = rl.getCol(filename)[0]
@@ -284,12 +296,12 @@ for fix in range(0, lsa_dim):
 #拿掉才照之前的工作方式作
 lsa_S_diagonal.append(file_column)
 
-#fs.write(str(file_column))
-#fs.write('\n--------------------------------Column Only 1\n')
-#for c in file_column:
-#    fs.write('    ' + str(c))
-#    fs.write('\n')
-#fs.close()
+fs.write(str(file_column))
+fs.write('\n--------------------------------Column Only 1\n')
+for c in file_column:
+    fs.write('    ' + str(c))
+    fs.write('\n')
+fs.close()
 #print '************************'
 #print lsa_S_diagonal
 
@@ -300,29 +312,28 @@ lsa_S_diagonal.append(file_column)
 #還有
 '--------------------------------Prepare matrix'
 lsa_U = np.array(lsa_U_matrix, float)
-lsa_U = np.transpose(lsa_U)
+lsa_Ut = np.transpose(lsa_U)
 
 lsa_S = np.zeros((lsa_dim, lsa_dim), float) #create 50x50 matrix filled with 0
 np.fill_diagonal(lsa_S, lsa_S_diagonal) #assign diagonal values
 
 qt_matrix = np.array(query_term_matrix, float)
 
-lsa_Vt = np.array(lsa_V_matrix, float)
-lsa_Vt = np.transpose(lsa_Vt)
+lsa_V = np.array(lsa_V_matrix, float)
+lsa_Vt = np.transpose(lsa_V)
 
 print 'Size of qt_matrix = {0}'.format(qt_matrix.shape)
-print 'Size of lsa_U = {0}'.format(lsa_U.shape)
+print 'Size of lsa_U = {0}'.format(lsa_Ut.shape)
 print 'Size of lsa_S = {0}'.format(lsa_S.shape)
 print 'Size of lsa_Vt = {0}'.format(lsa_Vt.shape)
 
 np.savetxt('S.log', lsa_S)
-np.savetxt('U.log', lsa_U)
-np.savetxt('V.log', lsa_U)
+np.savetxt('Ut.log', lsa_Ut)
+np.savetxt('Vt.log', lsa_Vt)
 np.savetxt('qt.log', qt_matrix)
 #first, we multiply matrixes => qt_matrix * lsa_U
-#fout = open('qt#lsaU.log', 'w')
 print '--------------------------------Calculating qt_matrix * lsa_U_matrix'
-qt_mult_lsaU = np.dot(qt_matrix, lsa_U)
+qt_mult_lsaU = np.dot(qt_matrix, lsa_Ut)
 np.savetxt('qt#lsaU.log', qt_mult_lsaU)
 print 'Success writing file: qt#lsaU.log'
 print 'Size of qt_matrix*lsa_U = {0}'.format(qt_mult_lsaU.shape)

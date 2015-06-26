@@ -33,7 +33,7 @@ class getCol:
                 column.append("")
         return column
 #end class
-
+'''
 class getRow:
     matrix = []
     def __init__(self, file, delim=" "):
@@ -50,6 +50,10 @@ class getRow:
                 row.append("")
         return row
 #end class
+'''
+
+def GetRow(filename):
+    full_txt = open(filename, 'r').readline()
 
 
 

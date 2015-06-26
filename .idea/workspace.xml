@@ -27,8 +27,8 @@
       <file leaf-file-name="HW4_LSA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW4_LSA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5925297" vertical-offset="10211" max-vertical-offset="10800">
-              <caret line="440" column="10" selection-start-line="440" selection-start-column="10" selection-end-line="440" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.7147708" vertical-offset="4883" max-vertical-offset="11064">
+              <caret line="221" column="25" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="25" />
               <folding>
                 <element signature="e#24#51#0" expanded="true" />
               </folding>
@@ -95,8 +95,8 @@
       <file leaf-file-name="readLSA.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readLSA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="1560">
-              <caret line="4" column="29" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="803" max-vertical-offset="1656">
+              <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -110,11 +110,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/PreprocessIDF.py" />
-        <option value="$PROJECT_DIR$/readLSA.py" />
         <option value="$PROJECT_DIR$/evaluation.py" />
         <option value="$PROJECT_DIR$/readquery.py" />
         <option value="$PROJECT_DIR$/QUcosV.py" />
         <option value="$PROJECT_DIR$/read_doc_query.py" />
+        <option value="$PROJECT_DIR$/readLSA.py" />
         <option value="$PROJECT_DIR$/HW4_LSA.py" />
       </list>
     </option>
@@ -524,16 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readLSA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="1560">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PreprocessIDF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="3816">
@@ -549,6 +539,32 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="1704">
           <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QUcosV.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8219" max-vertical-offset="10296">
+          <caret line="355" column="7" selection-start-line="355" selection-start-column="7" selection-end-line="355" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qt.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65195245" vertical-offset="0" max-vertical-offset="589">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readLSA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="803" max-vertical-offset="1656">
+          <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -572,18 +588,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QUcosV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8219" max-vertical-offset="10296">
-          <caret line="355" column="7" selection-start-line="355" selection-start-column="7" selection-end-line="355" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW4_LSA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5925297" vertical-offset="10211" max-vertical-offset="10800">
-          <caret line="440" column="10" selection-start-line="440" selection-start-column="10" selection-end-line="440" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.7147708" vertical-offset="4883" max-vertical-offset="11064">
+          <caret line="221" column="25" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="25" />
           <folding>
             <element signature="e#24#51#0" expanded="true" />
           </folding>
