@@ -165,19 +165,18 @@ query_term_matrix = []
 q_num = 0
 #先試試看只用IDF會怎麼樣！
 for a_query in full_qrys_wf_list:
-    term_vector = [0]*51254
+    term_vector = [0]*51253
     for qt in a_query['word_freq_list'] :
         #term_vector[int(qt['word_id'], 10)] = GetTermIDF(qt['word_id'], term_IDF_list)
         tf = float(GetTermFreq('query', a_query['qry_id'], int(qt['word_id'], 10), full_qrys_wf_list))
         idf = float(GetTermIDF(qt['word_id'], term_IDF_list))
-        term_vector[int(qt['word_id'], 10)] = tf*idf
+        term_vector[int(qt['word_id'], 10)-1] = tf*idf
         #print str(qt['word_id']) + '\t' + str(term_vector[int(qt['word_id'], 10)]) + '\t' + str(tf) + '\t' + str(idf) + '\t' + str(tf*idf) + '\n'
         #def GetTermFreq(type, doc_id, term_id, full_structure_list):
 
     #end for word_freq_list for every query
     q_num = q_num + 1
     query_term_matrix.append(term_vector)
-    term_vector = [0]*51254
 #end for
 #GetTermIDF(2572, term_IDF_list)
 
@@ -223,7 +222,8 @@ readU = open(filename, 'r')
 
 for d in range(0, lsa_dim):
     #file_row = rl.getRow(filename)[d]
-
+    this_line_txt = readU.readline()
+    file_row = this_line_txt.split()
     if d == 0 or d == 1 or d == 2 :
         print '$' + str(file_row)
     lsa_U_matrix.append(file_row)
@@ -233,7 +233,7 @@ for d in range(0, lsa_dim):
         fu.write('    ' + str(r))
         fu.write('\n')
     fu.write('\n\n')
-
+#end for
 fu.write(str(lsa_U_matrix))
 fu.close()
 
@@ -259,12 +259,18 @@ lsa_V_matrix = []
 fv = open('LSA_V_matrix.log', 'w')
 
 #TODO: read LSA matrix by row
+readV = open(filename, 'r')
 for d in range(0, lsa_dim):
-    file_column = rl.getRow(filename)[d]
-    lsa_V_matrix.append(file_column)
+    this_line_txt = readV.readline()
+    file_row = this_line_txt.split()
+
+    if d == 0 or d == 1 or d == 2 :
+        print '#' + str(file_row)
+    #file_column = rl.getRow(filename)[d]
+    lsa_V_matrix.append(file_row)
 
     fv.write('\n--------------------------------Column {0}\n'.format(d))
-    for c in file_column:
+    for c in file_row:
         fv.write('    ' + str(c))
         fv.write('\n')
     fv.write('\n\n')
@@ -380,10 +386,10 @@ print '--------------------------------Aligning documents and scores '
 #doc_file_names_list 存doc的名字, 從名字編號小到大
 final_ranking = []
 map_result2query = []
-print doc_file_names_list[0]
-print doc_file_names_list[1]
-print doc_file_names_list[2]
-print doc_file_names_list[3]
+#print doc_file_names_list[0]
+#print doc_file_names_list[1]
+#print doc_file_names_list[2]
+#print doc_file_names_list[3]
 #print result_qtUS_cos_lsaV[0][1]
 
 for q in range(0, len(result_qtUS_cos_lsaV)):
@@ -394,9 +400,6 @@ for q in range(0, len(result_qtUS_cos_lsaV)):
     final_ranking.append(map_result2query)
     map_result2query = []
 #for every query
-
-
-print final_ranking[0]
 
 
 ff = open('final-before-ranking.log', 'w')
@@ -424,12 +427,6 @@ for i in range(0, len(final_ranking)):
     ranked_list.append(sorted_row_dic)
 #end for
 
-print ranked_list[0]
-
-print '-----'
-
-print ranked_list[1]
-print ranked_list[1]
 
 #Query 7      20023.query 2265
 ff = open('final-ranking.log', 'w')
@@ -439,7 +436,7 @@ for op in range(0, len(ranked_list)):
     ff.write('Query ' + str(t) + ' .query  2265\n')
 
     for d in range(0, len(ranked_list[op])):
-        ff.write(ranked_list[op][d]['doc_id'] + '\t' )
+        ff.write(ranked_list[op][d]['doc_id'] + ' ' )
         ff.write(repr(ranked_list[op][d]['rank']))
         ff.write('\n')
     #end for
@@ -452,4 +449,7 @@ for op in range(0, len(ranked_list)):
 ff.close()
 
 
-
+print ranked_list[0][0]['doc_id']
+print ranked_list[0][1]['doc_id']
+print ranked_list[0][2]['doc_id']
+print ranked_list[0][3]['doc_id']
