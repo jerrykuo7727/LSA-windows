@@ -1,0 +1,1 @@
+svd  -r st  -o LSA50  -d 50  Term-Doc-Matrix
