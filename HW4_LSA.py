@@ -168,8 +168,10 @@ for a_query in full_qrys_wf_list:
     term_vector = [0]*51254
     for qt in a_query['word_freq_list'] :
         #term_vector[int(qt['word_id'], 10)] = GetTermIDF(qt['word_id'], term_IDF_list)
-        term_vector[int(qt['word_id'], 10)] = GetTermFreq('query', full_qrys_wf_list[q_num]['qry_id'], int(qt['word_id'], 10),full_qrys_wf_list) \
-                                              * GetTermIDF(qt['word_id'], term_IDF_list)
+        tf = float(GetTermFreq('query', a_query['qry_id'], int(qt['word_id'], 10), full_qrys_wf_list))
+        idf = float(GetTermIDF(qt['word_id'], term_IDF_list))
+        term_vector[int(qt['word_id'], 10)] = tf*idf
+        #print str(qt['word_id']) + '\t' + str(term_vector[int(qt['word_id'], 10)]) + '\t' + str(tf) + '\t' + str(idf) + '\t' + str(tf*idf) + '\n'
         #def GetTermFreq(type, doc_id, term_id, full_structure_list):
 
     #end for word_freq_list for every query
@@ -182,12 +184,12 @@ for a_query in full_qrys_wf_list:
 
 #試試看TF-IDF
 
+#print GetTermFreq('query', full_qrys_wf_list[0]['qry_id'], '2280',full_qrys_wf_list)
 
-
-print '=============================check'
-for pr in range(0, 51254):
-    if query_term_matrix[0][pr] != 0:
-        print str(pr) + '\t' + str(query_term_matrix[0][pr])
+#print '=============================check'
+#for pr in range(0, 51254):
+#    if query_term_matrix[0][pr] != 0:
+#        print str(pr) + '\t' + str(query_term_matrix[0][pr])
 
 
 

@@ -70,7 +70,7 @@ def ReadOneQuery(query_dir, filename):
 
     #刪掉-1
     minus1 = split_line_list.count('-1')
-    print '-1$' + str(minus1)
+    #print '-1$' + str(minus1)
     for check in range(0, minus1):
         split_line_list.remove('-1')
     #end for del -1
@@ -78,8 +78,7 @@ def ReadOneQuery(query_dir, filename):
 
     #delete空的element的index
     empty = split_line_list.count('')
-    print '    empty$' + str(empty)
-
+    #print '    empty$' + str(empty)
     for check in range(0, empty):
         split_line_list.remove('')
     #end for delete空元素
